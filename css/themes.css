@@ -1,0 +1,252 @@
+/* themes.css - Theme variables and theme-specific overrides */
+
+/* Theme: Classic (default) */
+:root, .theme-classic {
+    --bg-color: #c0c0c0;
+    --border-light: #ffffff;
+    --border-dark: #808080;
+    --led-bg: #000000;
+    --led-color: #FF0000;
+    --cell-bg: #c0c0c0;
+    --cell-revealed-bg: #c0c0c0;
+    --text-color: #000000;
+    --menu-highlight: #000080;
+    --menu-highlight-text: #ffffff;
+    --dialog-title-bg: #000080;
+}
+
+/* Theme: Dark */
+.theme-dark {
+    --bg-color: #2d2d2d;
+    --border-light: #4a4a4a;
+    --border-dark: #1a1a1a;
+    --led-bg: #0a0a0a;
+    --led-color: #00FF00;
+    --cell-bg: #3a3a3a;
+    --cell-revealed-bg: #2a2a2a;
+    --text-color: #e0e0e0;
+    --menu-highlight: #0066cc;
+    --menu-highlight-text: #ffffff;
+    --dialog-title-bg: #333333;
+}
+
+/* Theme: Blue */
+.theme-blue {
+    --bg-color: #d4e4f7;
+    --border-light: #ffffff;
+    --border-dark: #7ba3d4;
+    --led-bg: #001133;
+    --led-color: #FF6600;
+    --cell-bg: #c8ddf0;
+    --cell-revealed-bg: #b8cde0;
+    --text-color: #000000;
+    --menu-highlight: #0055E5;
+    --menu-highlight-text: #ffffff;
+    --dialog-title-bg: #0055E5;
+}
+
+/* === Dark Theme Overrides === */
+
+.theme-dark body,
+.theme-dark .game-window,
+.theme-dark .game-container,
+.theme-dark .board {
+    background: var(--bg-color);
+}
+
+.theme-dark .game-window {
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-dark .game-container {
+    border-top-color: var(--border-dark);
+    border-left-color: var(--border-dark);
+    border-bottom-color: var(--border-light);
+    border-right-color: var(--border-light);
+}
+
+.theme-dark .status-bar {
+    background: var(--bg-color);
+    border-top-color: var(--border-dark);
+    border-left-color: var(--border-dark);
+    border-bottom-color: var(--border-light);
+    border-right-color: var(--border-light);
+}
+
+.theme-dark .cell {
+    background: var(--cell-bg);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-dark .cell.revealed {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-dark .cell.pressed {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-dark .cell.flagged {
+    background: var(--cell-bg);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-dark .cell.mine {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-dark .menu-bar .menu-btn {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-dark .menu-dropdown {
+    background: var(--bg-color);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-dark .menu-item {
+    color: var(--text-color);
+}
+
+.theme-dark .menu-item:hover {
+    background: var(--menu-highlight);
+    color: var(--menu-highlight-text);
+}
+
+.theme-dark .menu-separator {
+    background: var(--border-dark);
+}
+
+.theme-dark .led-display {
+    background: var(--led-bg);
+    color: var(--led-color);
+}
+
+.theme-dark .dialog-overlay .dialog {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-dark .dialog-title {
+    background: var(--dialog-title-bg);
+    color: var(--menu-highlight-text);
+}
+
+/* === Blue Theme Overrides === */
+
+.theme-blue body,
+.theme-blue .game-window,
+.theme-blue .game-container,
+.theme-blue .board {
+    background: var(--bg-color);
+}
+
+.theme-blue .game-window {
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-blue .game-container {
+    border-top-color: var(--border-dark);
+    border-left-color: var(--border-dark);
+    border-bottom-color: var(--border-light);
+    border-right-color: var(--border-light);
+}
+
+.theme-blue .status-bar {
+    background: var(--bg-color);
+    border-top-color: var(--border-dark);
+    border-left-color: var(--border-dark);
+    border-bottom-color: var(--border-light);
+    border-right-color: var(--border-light);
+}
+
+.theme-blue .cell {
+    background: var(--cell-bg);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-blue .cell.revealed {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-blue .cell.pressed {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-blue .cell.flagged {
+    background: var(--cell-bg);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-blue .cell.mine {
+    background: var(--cell-revealed-bg);
+    border-color: var(--border-dark);
+}
+
+.theme-blue .menu-bar .menu-btn {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+.theme-blue .menu-dropdown {
+    background: var(--bg-color);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-blue .menu-item:hover {
+    background: var(--menu-highlight);
+    color: var(--menu-highlight-text);
+}
+
+.theme-blue .led-display {
+    background: var(--led-bg);
+    color: var(--led-color);
+}
+
+.theme-blue .dialog-overlay .dialog {
+    background: var(--bg-color);
+    color: var(--text-color);
+    border-top-color: var(--border-light);
+    border-left-color: var(--border-light);
+    border-bottom-color: var(--border-dark);
+    border-right-color: var(--border-dark);
+}
+
+.theme-blue .dialog-title {
+    background: var(--dialog-title-bg);
+    color: var(--menu-highlight-text);
+}

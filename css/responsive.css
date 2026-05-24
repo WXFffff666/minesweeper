@@ -1,0 +1,206 @@
+/* responsive.css - Media queries and mobile adaptations */
+
+/* Cell size breakpoints */
+@media (min-width: 1200px) { .board { --cell-size: 28px; } }
+@media (min-width: 601px) and (max-width: 900px) { .board { --cell-size: 24px; } }
+@media (max-width: 600px) { .board { --cell-size: 28px; } }
+@media (max-width: 360px) { .board { --cell-size: 24px; } }
+
+/* Prevent zoom on double-tap and long-press context menu */
+html {
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+}
+
+/* ===== Mobile (max-width: 600px) ===== */
+@media (max-width: 600px) {
+    body {
+        padding-top: 5px;
+        align-items: flex-start;
+    }
+
+    .game-window {
+        max-width: 100vw;
+        padding: 3px;
+        border-width: 2px;
+    }
+
+    .game-container {
+        padding: 3px;
+    }
+
+    .board-container {
+        max-width: calc(100vw - 30px);
+        overflow: auto;
+    }
+
+    .menu-bar {
+        font-size: 11px;
+    }
+
+    .menu-btn {
+        padding: 2px 6px;
+        font-size: 11px;
+    }
+
+    .status-bar {
+        padding: 3px 4px;
+        margin-bottom: 4px;
+    }
+
+    .digit {
+        font-size: 18px;
+        width: 11px;
+    }
+
+    .smiley-btn {
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+
+    .flag-mode-btn {
+        display: flex;
+        width: 24px;
+        height: 24px;
+        font-size: 14px;
+    }
+}
+
+/* ===== Tablet (601px - 900px) ===== */
+@media (min-width: 601px) and (max-width: 900px) {
+    body {
+        padding-top: 10px;
+    }
+
+    .flag-mode-btn {
+        display: flex;
+    }
+}
+
+/* ===== Landscape mobile ===== */
+@media (max-height: 500px) and (orientation: landscape) {
+    body {
+        padding-top: 2px;
+    }
+
+    .status-bar {
+        padding: 2px 4px;
+        margin-bottom: 3px;
+    }
+
+    .menu-bar {
+        margin-bottom: 2px;
+    }
+
+    .game-container {
+        padding: 3px;
+    }
+
+    .game-window {
+        padding: 3px;
+    }
+}
+
+/* ===== Touch device detection ===== */
+@media (hover: none) and (pointer: coarse) {
+    .flag-mode-btn {
+        display: flex;
+    }
+
+    .cell {
+        min-width: 28px;
+        min-height: 28px;
+    }
+
+    /* Larger touch targets for status bar buttons */
+    .smiley-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    .flag-mode-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 18px;
+    }
+
+    /* Prevent overscroll bounce */
+    .board-container {
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+
+/* ===== Very small screens (< 360px) ===== */
+@media (max-width: 360px) {
+    .game-window {
+        padding: 2px;
+        border-width: 1px;
+    }
+
+    .game-container {
+        padding: 2px;
+    }
+
+    .board-container {
+        max-width: calc(100vw - 20px);
+    }
+
+    .digit {
+        font-size: 16px;
+        width: 10px;
+    }
+
+    .smiley-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+    }
+
+    .flag-mode-btn {
+        width: 22px;
+        height: 22px;
+        font-size: 13px;
+    }
+}
+
+/* ===== Portrait orientation - maximize vertical space ===== */
+@media (orientation: portrait) and (max-width: 600px) {
+    body {
+        padding-top: 2px;
+        align-items: flex-start;
+        justify-content: flex-start;
+    }
+}
+
+/* ===== Cell size breakpoints ===== */
+
+/* Large desktop (> 1200px) */
+@media (min-width: 1201px) {
+    .board {
+        --cell-size: 28px;
+    }
+}
+
+/* Tablet (601px - 1200px) */
+@media (min-width: 601px) and (max-width: 1200px) {
+    .board {
+        --cell-size: 24px;
+    }
+}
+
+/* Mobile (max-width: 600px) - larger for touch */
+@media (max-width: 600px) {
+    .board {
+        --cell-size: 28px;
+    }
+}
+
+/* Very small screens (< 360px) */
+@media (max-width: 360px) {
+    .board {
+        --cell-size: 24px;
+    }
+}

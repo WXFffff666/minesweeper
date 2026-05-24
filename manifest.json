@@ -1,0 +1,13 @@
+{
+    "name": "Classic Minesweeper",
+    "short_name": "Minesweeper",
+    "description": "Classic Windows Minesweeper recreation",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#c0c0c0",
+    "theme_color": "#c0c0c0",
+    "orientation": "any",
+    "icons": [
+        { "src": "icons/icon.svg", "sizes": "any", "type": "image/svg+xml" }
+    ]
+}

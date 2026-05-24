@@ -1,0 +1,95 @@
+/* board.css - Game board, cells, and cell states */
+
+/* Board Grid */
+.board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols, 9), var(--cell-size, 24px));
+  --cell-size: 24px;
+  gap: 0;
+  background: #c0c0c0;
+}
+
+/* Cell - Default (Unrevealed) - raised 3D button */
+.cell {
+  width: var(--cell-size, 24px);
+  height: var(--cell-size, 24px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Arial Black', Arial, sans-serif;
+  font-weight: bold;
+  font-size: calc(var(--cell-size, 24px) * 0.65);
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+  background: #c0c0c0;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+}
+
+/* Cell Pressed */
+.cell.pressed {
+  border: 1px solid #808080;
+  background: #c0c0c0;
+}
+
+/* Revealed Cell - sunken flat */
+.cell.revealed {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+/* Flagged Cell - stays raised */
+.cell.flagged {
+  background: #c0c0c0;
+  border-top: 3px solid #ffffff;
+  border-left: 3px solid #ffffff;
+  border-bottom: 3px solid #808080;
+  border-right: 3px solid #808080;
+}
+
+/* Number Colors */
+.cell.revealed[data-number="1"] { color: #0000FF; }
+.cell.revealed[data-number="2"] { color: #008000; }
+.cell.revealed[data-number="3"] { color: #FF0000; }
+.cell.revealed[data-number="4"] { color: #000080; }
+.cell.revealed[data-number="5"] { color: #800000; }
+.cell.revealed[data-number="6"] { color: #008080; }
+.cell.revealed[data-number="7"] { color: #000000; }
+.cell.revealed[data-number="8"] { color: #808080; }
+
+/* Mine Cell */
+.cell.mine {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+}
+
+/* Exploded Mine */
+.cell.exploded {
+  background: #FF0000;
+  border: 1px solid #808080;
+}
+
+/* Wrong Flag */
+.cell.wrong-flag {
+  background: #c0c0c0;
+  border: 1px solid #808080;
+  position: relative;
+}
+
+.cell.wrong-flag::after {
+  content: '\00D7';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FF0000;
+  font-size: calc(var(--cell-size, 24px) * 0.8);
+  font-weight: bold;
+}

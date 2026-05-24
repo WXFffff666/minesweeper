@@ -159,6 +159,35 @@ MS.Renderer = (function() {
         }
     }
 
+    function autoSizeBoard(rows, cols) {
+        var viewportW = window.innerWidth;
+        var viewportH = window.innerHeight;
+        var isMobile = viewportW <= 600;
+
+        // Subtract game chrome (borders, padding, menu, status bar)
+        var chromeW = isMobile ? 24 : 40;
+        var chromeH = isMobile ? 75 : 100;
+        var bodyPad = isMobile ? 7 : 20;
+
+        var availW = viewportW - chromeW - bodyPad * 2;
+        var availH = viewportH - chromeH - bodyPad * 2;
+
+        // On desktop large screens, cap to maintain classic compact feel
+        if (viewportW > 900) {
+            availW = Math.min(availW, viewportW * 0.75);
+            availH = Math.min(availH, viewportH * 0.8);
+        }
+
+        var maxCellW = Math.floor(availW / cols);
+        var maxCellH = Math.floor(availH / rows);
+        var cellSize = Math.min(maxCellW, maxCellH);
+
+        // Clamp: 16px min (readable on mobile), 56px max (desktop beginner)
+        cellSize = Math.max(16, Math.min(56, cellSize));
+
+        boardEl.style.setProperty('--cell-size', cellSize + 'px');
+    }
+
     return {
         createBoard: createBoard,
         getCellElement: getCellElement,
@@ -169,6 +198,7 @@ MS.Renderer = (function() {
         updateLED: updateLED,
         updateMineCounter: updateMineCounter,
         updateTimer: updateTimer,
-        setSmiley: setSmiley
+        setSmiley: setSmiley,
+        autoSizeBoard: autoSizeBoard
     };
 })();

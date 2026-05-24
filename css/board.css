@@ -4,7 +4,6 @@
 .board {
   display: grid;
   grid-template-columns: repeat(var(--cols, 9), var(--cell-size, 24px));
-  --cell-size: 24px;
   gap: 0;
   background: #c0c0c0;
 }

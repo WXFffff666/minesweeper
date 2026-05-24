@@ -39,6 +39,17 @@ MS.App = (function() {
         initMenus();
         registerServiceWorker();
         newGame();
+
+        // Auto-resize board on viewport change
+        var resizeTimer = null;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function() {
+                if (currentConfig) {
+                    MS.Renderer.autoSizeBoard(currentConfig.rows, currentConfig.cols);
+                }
+            }, 150);
+        });
     }
 
     // --- Game Flow ---
@@ -52,6 +63,7 @@ MS.App = (function() {
         gameState = 'idle';
         MS.Engine.newGame(currentConfig.rows, currentConfig.cols, currentConfig.mines);
         MS.Renderer.createBoard(currentConfig.rows, currentConfig.cols);
+        MS.Renderer.autoSizeBoard(currentConfig.rows, currentConfig.cols);
         MS.Renderer.updateMineCounter(currentConfig.mines);
         MS.Timer.reset();
         MS.Renderer.updateTimer(0);

@@ -26,6 +26,11 @@ MS.Input = (function() {
     var LONG_PRESS_MS = 500;
     var MOVE_THRESHOLD = 10;
 
+    // Double-tap chord detection
+    var lastTapTime = 0;
+    var lastTapCell = null;
+    var DOUBLE_TAP_MS = 300;
+
     function init() {
         var board = document.querySelector('.board');
         var smiley = document.querySelector('.smiley-btn');
@@ -207,7 +212,10 @@ MS.Input = (function() {
         touchTimer = setTimeout(function() {
             if (!touchMoved && gameActive) {
                 // Long press = flag (regardless of flagMode)
-                if (onFlag) onFlag(cell.row, cell.col);
+                if (onFlag) {
+                    onFlag(cell.row, cell.col);
+                    if (navigator.vibrate) navigator.vibrate(30);
+                }
                 clearPressed();
                 MS.Renderer.setSmiley('normal');
                 touchTimer = null;
@@ -268,10 +276,26 @@ MS.Input = (function() {
 
         var elapsed = Date.now() - touchStartTime;
         if (elapsed < LONG_PRESS_MS) {
-            if (flagMode) {
-                if (onFlag) onFlag(cell.row, cell.col);
+            var now = Date.now();
+            // Check for double-tap on same cell (chord action)
+            if (lastTapCell && lastTapCell.row === cell.row && lastTapCell.col === cell.col
+                && (now - lastTapTime) < DOUBLE_TAP_MS) {
+                // Double-tap = chord
+                if (onChord) onChord(cell.row, cell.col);
+                lastTapCell = null;
+                lastTapTime = 0;
             } else {
-                if (onReveal) onReveal(cell.row, cell.col);
+                // Single tap action
+                lastTapCell = { row: cell.row, col: cell.col };
+                lastTapTime = now;
+                if (flagMode) {
+                    if (onFlag) {
+                        onFlag(cell.row, cell.col);
+                        if (navigator.vibrate) navigator.vibrate(30);
+                    }
+                } else {
+                    if (onReveal) onReveal(cell.row, cell.col);
+                }
             }
         }
 

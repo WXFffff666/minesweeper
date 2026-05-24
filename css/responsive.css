@@ -1,12 +1,7 @@
-/* responsive.css - Media queries and mobile adaptations */
+/* responsive.css - Responsive adaptations */
+/* Cell sizing is handled by JS (MS.Renderer.autoSizeBoard) */
 
-/* Cell size breakpoints */
-@media (min-width: 1200px) { .board { --cell-size: 28px; } }
-@media (min-width: 601px) and (max-width: 900px) { .board { --cell-size: 24px; } }
-@media (max-width: 600px) { .board { --cell-size: 28px; } }
-@media (max-width: 360px) { .board { --cell-size: 24px; } }
-
-/* Prevent zoom on double-tap and long-press context menu */
+/* Prevent zoom and touch callout */
 html {
     touch-action: manipulation;
     -webkit-touch-callout: none;
@@ -15,8 +10,7 @@ html {
 /* ===== Mobile (max-width: 600px) ===== */
 @media (max-width: 600px) {
     body {
-        padding-top: 5px;
-        align-items: flex-start;
+        padding: 5px;
     }
 
     .game-window {
@@ -30,8 +24,10 @@ html {
     }
 
     .board-container {
-        max-width: calc(100vw - 30px);
-        overflow: auto;
+        max-width: calc(100vw - 24px);
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
     }
 
     .menu-bar {
@@ -46,6 +42,7 @@ html {
     .status-bar {
         padding: 3px 4px;
         margin-bottom: 4px;
+        min-height: 32px;
     }
 
     .digit {
@@ -54,23 +51,23 @@ html {
     }
 
     .smiley-btn {
-        width: 24px;
-        height: 24px;
-        font-size: 14px;
+        width: 26px;
+        height: 26px;
+        font-size: 15px;
     }
 
     .flag-mode-btn {
         display: flex;
-        width: 24px;
-        height: 24px;
-        font-size: 14px;
+        width: 26px;
+        height: 26px;
+        font-size: 15px;
     }
 }
 
-/* ===== Tablet (601px - 900px) ===== */
-@media (min-width: 601px) and (max-width: 900px) {
+/* ===== Tablet (601px - 1024px) ===== */
+@media (min-width: 601px) and (max-width: 1024px) {
     body {
-        padding-top: 10px;
+        padding: 10px;
     }
 
     .flag-mode-btn {
@@ -81,12 +78,13 @@ html {
 /* ===== Landscape mobile ===== */
 @media (max-height: 500px) and (orientation: landscape) {
     body {
-        padding-top: 2px;
+        padding: 2px;
     }
 
     .status-bar {
         padding: 2px 4px;
         margin-bottom: 3px;
+        min-height: 28px;
     }
 
     .menu-bar {
@@ -108,12 +106,6 @@ html {
         display: flex;
     }
 
-    .cell {
-        min-width: 28px;
-        min-height: 28px;
-    }
-
-    /* Larger touch targets for status bar buttons */
     .smiley-btn {
         width: 30px;
         height: 30px;
@@ -129,7 +121,6 @@ html {
     /* Prevent overscroll bounce */
     .board-container {
         overscroll-behavior: contain;
-        -webkit-overflow-scrolling: touch;
     }
 }
 
@@ -142,10 +133,6 @@ html {
 
     .game-container {
         padding: 2px;
-    }
-
-    .board-container {
-        max-width: calc(100vw - 20px);
     }
 
     .digit {
@@ -169,38 +156,7 @@ html {
 /* ===== Portrait orientation - maximize vertical space ===== */
 @media (orientation: portrait) and (max-width: 600px) {
     body {
-        padding-top: 2px;
+        padding: 2px 5px;
         align-items: flex-start;
-        justify-content: flex-start;
-    }
-}
-
-/* ===== Cell size breakpoints ===== */
-
-/* Large desktop (> 1200px) */
-@media (min-width: 1201px) {
-    .board {
-        --cell-size: 28px;
-    }
-}
-
-/* Tablet (601px - 1200px) */
-@media (min-width: 601px) and (max-width: 1200px) {
-    .board {
-        --cell-size: 24px;
-    }
-}
-
-/* Mobile (max-width: 600px) - larger for touch */
-@media (max-width: 600px) {
-    .board {
-        --cell-size: 28px;
-    }
-}
-
-/* Very small screens (< 360px) */
-@media (max-width: 360px) {
-    .board {
-        --cell-size: 24px;
     }
 }

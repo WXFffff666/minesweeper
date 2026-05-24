@@ -15,9 +15,10 @@ body {
   overflow: auto;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  padding-top: 20px;
+  align-items: center;
+  padding: 10px;
   min-height: 100vh;
+  min-height: 100dvh;
 }
 
 /* Game Window */
